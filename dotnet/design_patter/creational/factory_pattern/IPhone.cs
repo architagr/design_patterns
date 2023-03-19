@@ -15,9 +15,18 @@ namespace creational.factory_pattern{
             Console.WriteLine($"{this.phoneType}, {this.storage} is packed !!!, PARTY");
             return true;
         }
-        public abstract PhoneType getPhoneType();
-        public abstract StorageOptions getStorage();
-        public abstract int getScreenSize();
-        public abstract int getCameraPixels();
+
+        public PhoneType getPhoneType(){
+            return this.phoneType;
+        }
+        public StorageOptions getStorage(){
+            return this.storage;
+        }
+        public int getScreenSize(){
+            return this.screenSize;
+        }
+        public int getCameraPixels(){
+            return this.cameraPixels;
+        }
     }
 }

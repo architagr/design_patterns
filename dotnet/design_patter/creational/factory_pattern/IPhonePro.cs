@@ -8,17 +8,5 @@ namespace creational.factory_pattern{
             this.phoneType = PhoneType.Pro;
         }
         
-        public override PhoneType getPhoneType(){
-            return this.phoneType;
-        }
-        public override StorageOptions getStorage(){
-            return this.storage;
-        }
-        public override int getScreenSize(){
-            return this.screenSize;
-        }
-        public override int getCameraPixels(){
-            return this.cameraPixels;
-        }
     }
 }

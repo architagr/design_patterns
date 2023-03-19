@@ -7,23 +7,36 @@ namespace designPattern
     {
         static void Main(string[] args)
         {
-            IPhone pro128 = new IPhonePro(StorageOptions.Gb128);
-            Console.WriteLine("*** Pro ***");
+            Console.WriteLine("**** India Store ****");
+            Store indiaStore = new IndiaStore();
+            Console.WriteLine("created order for pro 128 GB");
 
-            Console.WriteLine($"Screen size {pro128.getScreenSize()}");
-            Console.WriteLine($"Screen size {pro128.getCameraPixels()}");
+            IPhone phone = indiaStore.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
+            
+            Console.WriteLine($"Screen Size - {phone.getScreenSize()}");
+            Console.WriteLine($"Camera - {phone.getCameraPixels()} Pixels");
+            phone.takePic();
+            phone.toggleCameraShutterSound();
+            phone.takePic();
+            SimType[] sims = phone.getSimTypes();
+            Console.WriteLine($"sim types {sims[0]}, {sims[1]}");
 
-           IPhone plus128 = new IPhonePlus(StorageOptions.Gb128);
-            Console.WriteLine("*** Plus ***");
-            Console.WriteLine($"Screen size {plus128.getScreenSize()}");
-            Console.WriteLine($"Screen size {plus128.getCameraPixels()}");
 
-            Console.WriteLine("*** Pro from store ***");
+            Console.WriteLine("**** Japan Store ****");
+            Store japanStore = new JapanStore();
+            Console.WriteLine("created order for pro 128 GB");
 
-            Store store = new Store();
-            IPhone phone = store.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
-            Console.WriteLine($"Screen size {phone.getScreenSize()}");
-            Console.WriteLine($"Screen size {phone.getCameraPixels()}");
+            phone = japanStore.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
+            
+            Console.WriteLine($"Screen Size - {phone.getScreenSize()}");
+            Console.WriteLine($"Camera - {phone.getCameraPixels()} Pixels");
+            phone.takePic();
+            phone.toggleCameraShutterSound();
+            phone.takePic();
+            
+            sims = phone.getSimTypes();
+            Console.WriteLine($"sim types {sims[0]}, {sims[1]}");
+
         }
     }
 }

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "golang"
+		},
+		{
+			"path": "dotnet"
+		},
+		{
+			"path": "typescript"
+		}
+	]
+}

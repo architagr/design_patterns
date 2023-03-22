@@ -3,6 +3,8 @@ namespace creational.factory_pattern{
         protected int screenSize, cameraPixels;
 	    protected PhoneType phoneType;
 	    protected StorageOptions storage;
+        protected bool canTurnOffShutterSound, shutterSound;
+        protected SimType[] sims;
 
         public bool InstallSoftwares(){
             Console.WriteLine($"please wait we are updating the softwares for your {this.phoneType}, {this.storage}.");
@@ -15,7 +17,6 @@ namespace creational.factory_pattern{
             Console.WriteLine($"{this.phoneType}, {this.storage} is packed !!!, PARTY");
             return true;
         }
-
         public PhoneType getPhoneType(){
             return this.phoneType;
         }
@@ -27,6 +28,17 @@ namespace creational.factory_pattern{
         }
         public int getCameraPixels(){
             return this.cameraPixels;
+        }
+        public void toggleCameraShutterSound(){
+            if (this.canTurnOffShutterSound){
+                this.shutterSound = !this.shutterSound;
+            }
+        }
+        public SimType[] getSimTypes() {
+            return this.sims;
+        }
+        public void takePic(){
+            Console.WriteLine($"Shutter sound id {this.shutterSound}");   
         }
     }
 }

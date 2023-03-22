@@ -9,4 +9,8 @@ namespace creational.factory_pattern{
         Gb512 = 512,
         TB1    = 1024,
     }
+    public enum SimType{
+        Esim,
+        PhysicalSim
+    }
 }

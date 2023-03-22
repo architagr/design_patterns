@@ -14,7 +14,6 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-obj
 bin
-node_modules
-.vscode
+obj
+node_modules/

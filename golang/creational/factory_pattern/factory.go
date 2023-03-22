@@ -2,41 +2,60 @@ package factorypattern
 
 import "fmt"
 
-type IPhoneFactory interface {
-	CreatePhone(phoneType PhoneType,
-		memory StorageOptions) (IPhone, error)
-}
-
-type IStore interface {
-	Order(location MakeIn,
-		phoneType PhoneType,
-		memory StorageOptions) IPhone
-}
 type IPhoneStore struct {
+	factory IFactory
 }
 
-func InitFactory(location MakeIn) (IPhoneFactory, error) {
+func (store *IPhoneStore) Order(
+	phoneType PhoneType,
+	memory StorageOptions) (IPhone, error) {
+	phone, err := store.factory.CreatePhone(phoneType, memory)
+	if err != nil {
+		return nil, err
+	}
+	phone.InstallSoftwares()
+	phone.Package()
+	return phone, nil
+}
+func InitIndiaStore() *IPhoneStore {
+	return &IPhoneStore{
+		factory: &IPhoneIndiaFactory{},
+	}
+}
+func InitJapanStore() *IPhoneStore {
+	return &IPhoneStore{
+		factory: &IPhoneJapanFactory{},
+	}
+}
+func InitUSAStore() *IPhoneStore {
+	return &IPhoneStore{
+		factory: &IPhoneUSAFactory{},
+	}
+}
+func InitStore(location MakeIn) (*IPhoneStore, error) {
 	if location == India {
-		return &IPhoneIndiaFactory{}, nil
+		return &IPhoneStore{
+			factory: &IPhoneIndiaFactory{},
+		}, nil
 	} else if location == Japan {
-		return &IPhoneJapanFactory{}, nil
+		return &IPhoneStore{
+			factory: &IPhoneJapanFactory{},
+		}, nil
 	} else if location == USA {
-		return &IPhoneUSAFactory{}, nil
+		return &IPhoneStore{
+			factory: &IPhoneUSAFactory{},
+		}, nil
 	}
 	return nil, fmt.Errorf("wrong location")
 }
 
-func (store *IPhoneStore) Order(location MakeIn,
-	phoneType PhoneType,
-	memory StorageOptions) (IPhone, error) {
-	factory, err := InitFactory(location)
-	if err != nil {
-		return nil, err
-	}
-	return factory.CreatePhone(phoneType, memory)
+type IFactory interface {
+	CreatePhone(phoneType PhoneType,
+		memory StorageOptions) (IPhone, error)
 }
-
-type IPhoneIndiaFactory struct{}
+type IPhoneIndiaFactory struct {
+	IPhoneStore
+}
 
 func (indiaFactory *IPhoneIndiaFactory) CreatePhone(phoneType PhoneType,
 	memory StorageOptions) (IPhone, error) {
@@ -48,7 +67,9 @@ func (indiaFactory *IPhoneIndiaFactory) CreatePhone(phoneType PhoneType,
 	return nil, fmt.Errorf("incorrect phone type")
 }
 
-type IPhoneJapanFactory struct{}
+type IPhoneJapanFactory struct {
+	IPhoneStore
+}
 
 func (japanFactory *IPhoneJapanFactory) CreatePhone(phoneType PhoneType,
 	memory StorageOptions) (IPhone, error) {
@@ -60,7 +81,9 @@ func (japanFactory *IPhoneJapanFactory) CreatePhone(phoneType PhoneType,
 	return nil, fmt.Errorf("incorrect phone type")
 }
 
-type IPhoneUSAFactory struct{}
+type IPhoneUSAFactory struct {
+	IPhoneStore
+}
 
 func (usaFactory *IPhoneUSAFactory) CreatePhone(phoneType PhoneType,
 	memory StorageOptions) (IPhone, error) {

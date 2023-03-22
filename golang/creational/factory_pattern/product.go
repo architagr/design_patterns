@@ -1,5 +1,7 @@
 package factorypattern
 
+import "log"
+
 type SimType string
 
 const (
@@ -37,6 +39,8 @@ type IPhone interface {
 	GetScreenSize() int
 	GetCameraPixels() int
 	GetSimeType() (sim1 SimType, sim2 SimType)
+	InstallSoftwares() bool
+	Package() bool
 }
 
 type Phone struct {
@@ -45,6 +49,18 @@ type Phone struct {
 	storage                  StorageOptions
 	sim1, sim2               SimType
 	canTurnOffShutterSound   bool
+}
+
+func (phone *Phone) InstallSoftwares() bool {
+	log.Printf("please wait we are updating the softwares for your %v, %v.\n", phone.phoneType, phone.storage)
+	log.Printf("All softwares updated for %v, %v.\n", phone.phoneType, phone.storage)
+	return true
+}
+
+func (phone *Phone) Package() bool {
+	log.Printf("%v, %v is getting packed !!!\n", phone.phoneType, phone.storage)
+	log.Printf("%v, %v is packed !!!, PARTY\n", phone.phoneType, phone.storage)
+	return true
 }
 
 func (phone *Phone) GetPhoneType() PhoneType {

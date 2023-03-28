@@ -8,3 +8,8 @@ export enum StorageOptions {
     Gb512 = 512,
     TB1 = 1024,
 }
+
+export enum SimType {
+    Esim,
+    PhysicalSim
+}

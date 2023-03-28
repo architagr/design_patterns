@@ -1,4 +1,3 @@
-
 namespace creational.factory_pattern{
     public abstract class Store {
 

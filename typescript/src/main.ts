@@ -1,27 +1,37 @@
-import { IPhone } from "./creational/factory_pattern/IPhone";
-import { IPhonePlus } from "./creational/factory_pattern/IPhonePlus";
-import { IPhonePro } from "./creational/factory_pattern/IPhonePro";
 import { PhoneType, StorageOptions } from "./creational/factory_pattern/enum";
-import { Store } from "./creational/factory_pattern/store";
+import { IndiaStore, JapanStore } from "./creational/factory_pattern/store";
 
 const main = (): void => {
-    let pro128: IPhone = new IPhonePro(StorageOptions.Gb128);
-    console.log("*** Pro ***");
+    console.log("**** India Store ****");
+    let indiaStore = new IndiaStore();
+    console.log("created order for pro 128 GB");
 
-    console.log(`Screen size ${pro128.getScreenSize()}`);
-    console.log(`Screen size ${pro128.getCameraPixels()}`);
+    let phone = indiaStore.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
+    if (phone) {
+        console.log(`Screen Size - ${phone.getScreenSize()}`);
+        console.log(`Camera - ${phone.getCameraPixels()} Pixels`);
+        phone.takePic();
+        phone.toggleCameraShutterSound();
+        phone.takePic();
+        let sims = phone.getSimTypes();
+        console.log(`sim types ${sims[0]}, ${sims[1]}`);
 
-    let plus128: IPhone = new IPhonePlus(StorageOptions.Gb128);
-    console.log("*** Plus ***");
-    console.log(`Screen size ${plus128.getScreenSize()}`);
-    console.log(`Screen size ${plus128.getCameraPixels()}`);
+    }
+    console.log("**** Japan Store ****");
+    let japanStore = new JapanStore();
+    console.log("created order for pro 128 GB");
 
-    console.log("*** Pro from store ***");
+    phone = japanStore.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
+    if (phone) {
+        console.log(`Screen Size - ${phone.getScreenSize()}`);
+        console.log(`Camera - ${phone.getCameraPixels()} Pixels`);
+        phone.takePic();
+        phone.toggleCameraShutterSound();
+        phone.takePic();
 
-    let store: Store = new Store();
-    let phone: IPhone | null = store.CreateOrder(PhoneType.Pro, StorageOptions.Gb128);
-    console.log(`Screen size ${phone!.getScreenSize()}`);
-    console.log(`Screen size ${phone!.getCameraPixels()}`);
+        let sims = phone.getSimTypes();
+        console.log(`sim types ${sims[0]}, ${sims[1]}`);
+    }
 }
 
 main();

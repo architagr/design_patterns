@@ -19,7 +19,7 @@ func (carFactory *IndianCarFactory) BuildCar(fuelType string) (ICar, error) {
 	carObj.wheelBase = 22
 	carObj.drivingSide = DrivingType_Right
 	carObj.numberOfAirBags = 4
-	carObj.wheel = carFactory.sparePartfactory.createAC()
+	carObj.wheel = carFactory.sparePartfactory.createWheel()
 	carObj.enginePower = carFactory.sparePartfactory.createEngine(fuelType)
 	carObj.ac = carFactory.sparePartfactory.createAC()
 	carObj.fuelType = fuelType

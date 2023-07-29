@@ -1,6 +1,7 @@
 go 1.20
 
 use (
+	./structural/decorator/bonus
 	./structural/decorator/redesigned
 	./structural/decorator/traditional
 )

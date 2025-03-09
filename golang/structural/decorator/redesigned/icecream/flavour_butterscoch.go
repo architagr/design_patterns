@@ -1,17 +1,17 @@
 package icecream
 
-type FlavourButterscoch struct {
+type FlavourButterscotch struct {
 	ExistingIngrediant IIceCreamIngrediant
 }
 
-func (ingrediant *FlavourButterscoch) GetPreperationSteps() []string {
-	step := "1 scoop Butterscoch"
+func (ingrediant *FlavourButterscotch) GetPreperationSteps() []string {
+	step := "1 scoop Butterscotch"
 	if ingrediant.ExistingIngrediant != nil {
 		return append(ingrediant.ExistingIngrediant.GetPreperationSteps(), step)
 	}
 	return []string{step}
 }
-func (ingrediant *FlavourButterscoch) GetCost() int {
+func (ingrediant *FlavourButterscotch) GetCost() int {
 	oldCost := 0
 	if ingrediant.ExistingIngrediant != nil {
 		oldCost = ingrediant.ExistingIngrediant.GetCost()

@@ -8,9 +8,9 @@ const (
 )
 
 const (
-	FLAVOUR_VANILLA     IceCreamIngredient = "Vanilla"
-	FLAVOUR_Chocolate   IceCreamIngredient = "Chocolate"
-	FLAVOUR_BUTTERSCOCH IceCreamIngredient = "Butterscoch"
+	FLAVOUR_VANILLA      IceCreamIngredient = "Vanilla"
+	FLAVOUR_Chocolate    IceCreamIngredient = "Chocolate"
+	FLAVOUR_BUTTERSCOTCH IceCreamIngredient = "Butterscotch"
 )
 
 const (

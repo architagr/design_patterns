@@ -16,8 +16,8 @@ func Create(request CreateIceCreamRequest) IceCream {
 		case BASE_Chocolate_CONE:
 			steps = append(steps, "Chocolate Cone")
 			netCost += 12
-		case FLAVOUR_BUTTERSCOCH:
-			steps = append(steps, "1 scoop Butterscoch")
+		case FLAVOUR_BUTTERSCOTCH:
+			steps = append(steps, "1 scoop Butterscotch")
 			netCost += 5
 		case FLAVOUR_Chocolate:
 			steps = append(steps, "1 scoop Chocolate")
@@ -41,4 +41,29 @@ func Create(request CreateIceCreamRequest) IceCream {
 		PreperationSteps: steps,
 		Cost:             netCost,
 	}
+}
+
+func CreateButterscotchIcecream(scoops int) IceCream {
+	ingrediants := []IceCreamIngredient{
+		BASE_PLAIN_CONE,
+	}
+	for i := 0; i < scoops; i++ {
+		ingrediants = append(ingrediants, FLAVOUR_BUTTERSCOTCH)
+	}
+	ingrediants = append(ingrediants, TOPPING_SPRINKLES)
+	return Create(CreateIceCreamRequest{
+		Ingrediants: ingrediants,
+	})
+}
+
+func CreateVanillaIcecream(scoops int) IceCream {
+	ingrediants := []IceCreamIngredient{
+		BASE_PLAIN_CONE,
+	}
+	for i := 0; i < scoops; i++ {
+		ingrediants = append(ingrediants, FLAVOUR_VANILLA)
+	}
+	return Create(CreateIceCreamRequest{
+		Ingrediants: ingrediants,
+	})
 }

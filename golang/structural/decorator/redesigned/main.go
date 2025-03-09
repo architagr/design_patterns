@@ -9,7 +9,7 @@ func main() {
 	icecreamRequest := icecream.CreateIceCreamRequest{
 		Ingrediants: []icecream.IceCreamIngredient{
 			icecream.BASE_PLAIN_CONE,
-			icecream.FLAVOUR_BUTTERSCOCH,
+			icecream.FLAVOUR_BUTTERSCOTCH,
 			icecream.BASE_Chocolate_CONE,
 			icecream.FLAVOUR_Chocolate,
 			icecream.TOPPING_CHOCOLATE_SAUCE,

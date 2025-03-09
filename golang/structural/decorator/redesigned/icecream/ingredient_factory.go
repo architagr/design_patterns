@@ -10,8 +10,8 @@ func ingrediantFactory(ingredient IceCreamIngredient, existing IIceCreamIngredia
 		return &BaseChocolateCone{
 			ExistingIngrediant: existing,
 		}
-	case FLAVOUR_BUTTERSCOCH:
-		return &FlavourButterscoch{
+	case FLAVOUR_BUTTERSCOTCH:
+		return &FlavourButterscotch{
 			ExistingIngrediant: existing,
 		}
 	case FLAVOUR_Chocolate:
